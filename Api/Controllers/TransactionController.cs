@@ -34,7 +34,7 @@ namespace Api.Controllers
                 {
                     Amount = transaction.Amount,
                     Order = JsonConvert.SerializeObject(transaction.Order),
-                    CreatedOn = DateTime.UtcNow.ToShortDateString()
+                    CreatedOn = DateTime.UtcNow.ToString("dd MMM yyyy HH:mm:ss")
                 };
 
                 var result = await _splitService.CreateTransaction(model, transaction.Sellers);
@@ -76,6 +76,40 @@ namespace Api.Controllers
                     error = ex.Message
                 });
             }
+        }
+
+        [HttpPost("seller")]
+        public async Task<IActionResult> SaveSeller([FromBody] Seller seller)
+        {
+            if(seller == null)
+            {
+                return BadRequest();
+            }
+
+            try
+            {
+                var model = new Seller
+                {
+                    Id = seller.Id,
+                    Mdr = seller.Mdr,
+                    CreatedOn = DateTime.UtcNow.ToString("dd MMM yyyy HH:mm:ss"),
+                    UpdatedOn = DateTime.UtcNow.ToString("dd MMM yyyy HH:mm:ss")
+                };
+                var result = await _splitService.CreateSeller(model);
+                return Ok(new
+                {
+                    operationResult = result,
+                    data = seller
+                });
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(new
+                {
+                    operationResult = false,
+                    error = ex.Message
+                });
+            }            
         }
     }
 }

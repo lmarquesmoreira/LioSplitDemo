@@ -45,7 +45,7 @@ namespace Api.Services
                 await _transactionRepository.SaveAsync(transaction);
                 return true;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // exception occurs
             }
@@ -55,6 +55,21 @@ namespace Api.Services
         public async Task<List<SellerTransaction>> GetTransactions()
         {
             return await _sellerTransactionRepository.GetAsync();
+        }
+
+        public async Task<bool> CreateSeller(Seller seller)
+        {
+            try
+            {
+                await _sellerRepository.SaveAsync(seller);
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return false;
         }
     }
 }

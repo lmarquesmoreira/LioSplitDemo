@@ -3361,6 +3361,11 @@
       "from": "typescript@2.4.1",
       "resolved": "https://registry.npmjs.org/typescript/-/typescript-2.4.1.tgz"
     },
+    "typescript-collections": {
+      "version": "1.2.3",
+      "from": "typescript-collections@latest",
+      "resolved": "https://registry.npmjs.org/typescript-collections/-/typescript-collections-1.2.3.tgz"
+    },
     "uglify-js": {
       "version": "3.0.23",
       "from": "uglify-js@>=3.0.0 <3.1.0",

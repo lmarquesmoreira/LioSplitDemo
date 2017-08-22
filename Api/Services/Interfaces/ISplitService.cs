@@ -8,5 +8,7 @@ namespace Api.Services.Interfaces
     {
         Task<bool> CreateTransaction(Transaction transaction, List<Seller> sellers);
         Task<List<SellerTransaction>> GetTransactions();
+
+        Task<bool> CreateSeller(Seller seller);
     }
 }

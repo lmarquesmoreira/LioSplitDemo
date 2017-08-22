@@ -1,0 +1,22 @@
+﻿<h1>Transactions</h1>
+
+<p *ngIf="!transactions"><em>Loading...</em></p>
+
+<table class='table' *ngIf="transactions">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Amount</th>
+            <th>CreatedOn</th>
+            <th>SellerId</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of transactions">
+            <td>{{ transaction.id }}</td>
+            <td>{{ transaction.amount }}</td>
+            <td>{{ transaction.createdOn }}</td>
+            <td>{{ transaction.seller_id }}</td>
+        </tr>
+    </tbody>
+</table>
